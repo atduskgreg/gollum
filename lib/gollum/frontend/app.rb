@@ -1,10 +1,60 @@
 require 'cgi'
 require 'sinatra'
-require 'gollum'
+require File.expand_path(File.dirname(__FILE__)) + "/../../gollum.rb"
 require 'mustache/sinatra'
 
 require 'gollum/frontend/views/layout'
 require 'gollum/frontend/views/editable'
+
+#module Gollum
+#  class Attachment < Page
+#    include Pagination
+
+#    def self.format_to_ext(format)
+#      format.to_s
+#    end
+#
+#    def self.cname(name)
+#      name
+#    end
+#
+#  end
+#end
+
+#module Gollum
+# class Commiter
+#     def add_to_index(dir, name, format, data, allow_same_ext = false)
+#      path = @wiki.page_file_name(name, format)
+
+#      dir = '/' if dir.strip.empty?
+
+ #     fullpath = ::File.join(*[@wiki.page_file_dir, dir, path].compact)
+ #     fullpath = fullpath[1..-1] if fullpath =~ /^\//
+
+  #    if index.current_tree && tree = index.current_tree / dir
+  #      downpath = path.downcase.sub(/\.\w+$/, '')
+
+   #     tree.blobs.each do |blob|
+    #      next if page_path_scheduled_for_deletion?(index.tree, fullpath)
+     #     file = blob.name.downcase.sub(/\.\w+$/, '')
+      #    file_ext = ::File.extname(blob.name).sub(/^\./, '')
+       #   if downpath == file && !(allow_same_ext && file_ext == ext)
+        #    raise DuplicatePageError.new(dir, blob.name, path)
+         # end
+        #end
+     # end
+
+      # raise data.class
+
+    #  if data.is_a?(Tempfile)
+   #     index.add(fullpath,data.read)
+  #    else
+ #       index.add(fullpath, @wiki.normalize(data))
+   
+#   end
+  #  end
+ # end
+#end
 
 module Precious
   class App < Sinatra::Base

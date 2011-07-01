@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-require 'rubygems'
+# require 'rubygems'
 require '/home/git/gollum/lib/gollum/frontend/app'
 
 system("which git") or raise "Looks like I can't find the git CLI in your path.\nYour path is: #{ENV['PATH']}"

@@ -6,7 +6,7 @@ module Gollum
 
     Wiki.page_class = self
 
-    VALID_PAGE_RE = /^(.+)\.(md|mkdn?|mdown|markdown|textile|rdoc|org|creole|re?st(\.txt)?|asciidoc|pod|(media)?wiki)$/i
+    VALID_PAGE_RE = /^(.+)\.(md|mkdn?|mdown|markdown|textile|rdoc|org|creole|re?st(\.txt)?|asciidoc|asc|pod|(media)?wiki)$/i
     FORMAT_NAMES = { :markdown  => "Markdown",
                      :textile   => "Textile",
                      :rdoc      => "RDoc",
@@ -64,7 +64,7 @@ module Gollum
           :creole
         when /\.(re?st(\.txt)?)$/i
           :rest
-        when /\.(asciidoc)$/i
+        when /\.(asciidoc|asc)$/i
           :asciidoc
         when /\.(pod)$/i
           :pod

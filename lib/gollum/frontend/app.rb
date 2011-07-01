@@ -38,17 +38,29 @@ module Precious
       enable :logging, :raise_errors, :dump_errors
     end
 
-    post "/push" do
+    get "/_push" do
       wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
       wiki.repo.git.push
       redirect "/"
     end
     
-    post "/pull" do
+    get "/_pull" do
       wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
       wiki.repo.git.pull
       redirect "/"
     end
+
+    get "/raw/:page_name" do
+      @name = params[:page_name]
+      wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
+      if page = wiki.page(@name)
+        content_type 'text/plain'
+        page.raw_data
+      else
+        "couldn't find that page"
+      end
+    end
+
 
     get '/' do
       show_page_or_file('Home')

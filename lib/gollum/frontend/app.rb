@@ -38,6 +38,18 @@ module Precious
       enable :logging, :raise_errors, :dump_errors
     end
 
+    post "/push" do
+      wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
+      wiki.repo.git.push
+      redirect "/"
+    end
+    
+    post "/pull" do
+      wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
+      wiki.repo.git.pull
+      redirect "/"
+    end
+
     get '/' do
       show_page_or_file('Home')
     end
@@ -71,6 +83,7 @@ module Precious
       end
     end
 
+   
 
     post '/edit/*' do
       wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)

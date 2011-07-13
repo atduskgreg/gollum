@@ -4,7 +4,7 @@ require '/home/git/gollum/lib/gollum/frontend/app'
 
 system("which git") or raise "Looks like I can't find the git CLI in your path.\nYour path is: #{ENV['PATH']}"
 
-gollum_path = '/home/git/git_repo' # CHANGE THIS TO POINT TO YOUR OWN WIKI REPO
+gollum_path = '/home/git/git_repo.git' # CHANGE THIS TO POINT TO YOUR OWN WIKI REPO
 
 disable :run
 

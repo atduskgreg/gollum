@@ -32,7 +32,8 @@ module Gollum
       sanitize = no_follow ?
         @wiki.history_sanitizer :
         @wiki.sanitizer
-
+      
+      data = inline_asciidoc(data)
       data = extract_tex(@data.dup)
       data = extract_code(data)
       data = extract_tags(data)
@@ -59,6 +60,18 @@ module Gollum
 
     def doc_to_html(doc)
       doc.to_xhtml(:save_with => Nokogiri::XML::Node::SaveOptions::AS_XHTML)
+    end
+
+    def parse_inlined_asciidoc(s)
+      result = @wiki.file(s)
+      
+      if(result) 
+        result.raw_data 
+      end
+    end
+    
+    def inline_asciidoc(data)
+      data.gsub(/include::((\w|\.)*)\[\]/, "#{parse_inlined_asciidoc($1)}")
     end
 
     #########################################################################

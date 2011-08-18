@@ -22,11 +22,35 @@
       {{{content}}}
     </div>
   </div>
-  {{#has_sidebar}}
   <div id="wiki-rightbar" class="gollum-{{sidebar_format}}-content">
     {{{sidebar_content}}}
+    <hr>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://dev1.makerpress.com:8080/script.js"></script>
+	<script type="text/javascript">
+		jQuery(function () {
+			$('#progress').file_progress();
+		});
+	</script>
+        <ul class="actions">
+           <li class="minibutton">
+              <a id="start_button" href="#" onclick="return false;">Build</a>
+           </li>
+           <li class="minibutton">
+              <a href="http://dev1.makerpress.com:8080/epub/book.epub" target="_blank">EPUB</a>
+           </li>
+           <li class="minibutton">
+              <a href="http://dev1.makerpress.com:8080/log/log.html" target="_blank">Log</a>
+           </li>
+         </ul>
+        <div id="progress" class="progress_log">
+           <div>
+              <span class="status">Build Log</span>
+	   </div>
+	   <ul class="log"></ul>
+        </div>
+
   </div>
-  {{/has_sidebar}}
   {{#has_footer}}
   <div id="wiki-footer" class="gollum-{{footer_format}}-content">
     <div id="footer-content">

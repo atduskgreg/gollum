@@ -25,36 +25,37 @@
   <div id="wiki-rightbar" class="gollum-{{sidebar_format}}-content">
     {{{sidebar_content}}}
     <hr>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script type="text/javascript" src="http://dev1.makerpress.com:8080/script.js"></script>
-	<script type="text/javascript">
-		jQuery(function () {
-			$('#progress').file_progress();
-		});
-	</script>
-        <form>
-           <input type="submit" id="start_button" onclick="return false;">
-        </form>
-        <ul class="actions">
-<!--
-           <li class="minibutton">
-              <a id="start_button" href="#" onclick="return false;">Build</a>
-           </li>
--->
-           <li class="minibutton">
-              <a href="http://dev1.makerpress.com:8080/epub/book.epub" target="_blank">EPUB</a>
-           </li>
-           <li class="minibutton">
-              <a href="http://dev1.makerpress.com:8080/log/log.html" target="_blank">Log</a>
-           </li>
-         </ul>
-        <div id="progress" class="progress_log">
-           <div>
-              <span class="status">Build Log</span>
-	   </div>
-	   <ul class="log"></ul>
-        </div>
+    <style type="text/css">
+       .invisible {
+          display: none;
+       }
+    </style>
+    <script type="text/javascript">
+        function get_filename() {
+           var p = window.location.pathname;
+           var x = p.split("/");
+           return x[x.length-1];
+        }
 
+        $(document).ready(function() {
+           if (get_filename().toLowerCase() == "home") {
+              $("div#build-container").removeClass("invisible");
+           }
+        });
+
+    </script>
+    <div id="build-container" class="invisible">
+       <div id="ctl">
+          <ul class="build-controls">
+             <li class="minibutton" class="jaws"><a href="#">Build</a></li>
+          </ul>
+       </div>
+       <div id="status-container">
+          <div id="status">Working...</div>
+          <div id="log">
+          </div>
+       </div>
+   </div>
   </div>
   {{#has_footer}}
   <div id="wiki-footer" class="gollum-{{footer_format}}-content">

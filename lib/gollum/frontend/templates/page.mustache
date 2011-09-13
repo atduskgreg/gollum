@@ -1,3 +1,36 @@
+<style type="text/css">
+   .invisible {
+      display: none;
+    }
+</style>
+
+<script type="text/javascript">
+
+
+   function get_domain_name() {
+      var url = window.location.href;
+      var url_parts = url.split('/');
+      var domain_name_parts = url_parts[2].split(':');
+      var domain_name = domain_name_parts[0];
+      return domain_name;
+   }
+
+   function get_filename() {
+      var p = window.location.pathname;
+      var x = p.split("/");
+      return x[x.length-1];
+   }
+
+   $(document).ready(function() {
+      if (get_filename().toLowerCase() == "home") {
+         var remote_url = "http://" + get_domain_name() + ":8080/build.wsgi?root=" + get_filename();
+         $("ul.actions span#build-epub").removeClass("invisible");
+         $("ul.actions span#build-epub a#build-epub-href").attr('href',remote_url);
+      }
+   });
+
+</script>
+
 <div id="wiki-wrapper" class="page">
 <div id="head">
   <h1>{{title}}</h1>
@@ -12,6 +45,13 @@
        class="action-edit-page">Edit Page</a></li>
     <li class="minibutton"><a href="/history/{{escaped_name}}"
        class="action-page-history">Page History</a></li>
+ 
+   <span id="build-epub" class="invisible">
+       <li id="build-epub" class="minibutton">
+          <a id="build-epub-href" href="#">Build EPUB</a>
+       </li>
+    </span>
+
   </ul>
   {{>searchbar}}
 </div>
@@ -24,38 +64,6 @@
   </div>
   <div id="wiki-rightbar" class="gollum-{{sidebar_format}}-content">
     {{{sidebar_content}}}
-    <hr>
-    <style type="text/css">
-       .invisible {
-          display: none;
-       }
-    </style>
-    <script type="text/javascript">
-        function get_filename() {
-           var p = window.location.pathname;
-           var x = p.split("/");
-           return x[x.length-1];
-        }
-
-        $(document).ready(function() {
-           if (get_filename().toLowerCase() == "home") {
-              $("div#build-container").removeClass("invisible");
-           }
-        });
-
-    </script>
-    <div id="build-container" class="invisible">
-       <div id="ctl">
-          <ul class="build-controls">
-             <li class="minibutton" class="jaws"><a href="#">Build</a></li>
-          </ul>
-       </div>
-       <div id="status-container">
-          <div id="status">Working...</div>
-          <div id="log">
-          </div>
-       </div>
-   </div>
   </div>
   {{#has_footer}}
   <div id="wiki-footer" class="gollum-{{footer_format}}-content">

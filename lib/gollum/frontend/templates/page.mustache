@@ -23,7 +23,7 @@
 
    $(document).ready(function() {
       if (get_filename().match(/_INDEX$/)) {
-         var remote_url = "http://" + get_domain_name() + ":8080/build.wsgi?root=" + get_filename();
+         var remote_url = "http://" + get_domain_name() + ":8080/build.html?root=" + get_filename();
          $("ul.actions span#build-epub").removeClass("invisible");
          $("ul.actions span#build-epub a#build-epub-href").attr('href',remote_url);
       }
@@ -48,7 +48,7 @@
  
    <span id="build-epub" class="invisible">
        <li id="build-epub" class="minibutton">
-          <a id="build-epub-href" href="#">Build EPUB</a>
+          <a id="build-epub-href" target="_blank" href="#">Build EPUB</a>
        </li>
     </span>
 

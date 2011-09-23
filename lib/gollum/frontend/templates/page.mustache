@@ -30,6 +30,10 @@
          $("ul.actions span#build-epub a#build-epub-href").attr('href',remote_url);
 
       }
+      $('a#build-archive-href').click(function (e) {
+         e.preventDefault();
+         window.location.href = $('a#build-archive-href').attr('href'); 
+      });
    });
 
 </script>

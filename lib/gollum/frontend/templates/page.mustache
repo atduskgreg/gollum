@@ -22,10 +22,13 @@
    }
 
    $(document).ready(function() {
+      var archive_url = "http://" + get_domain_name() + ":8080/wsgi-bin/archive.wsgi";
+      $("a#build-archive-href").attr('href',archive_url);
       if (get_filename().match(/_INDEX$/)) {
          var remote_url = "http://" + get_domain_name() + ":8080/build_epub.html?root=" + get_filename();
          $("ul.actions span#build-epub").removeClass("invisible");
          $("ul.actions span#build-epub a#build-epub-href").attr('href',remote_url);
+
       }
    });
 
@@ -46,6 +49,10 @@
     <li class="minibutton"><a href="/history/{{escaped_name}}"
        class="action-page-history">Page History</a></li>
  
+    <li id="pull-archive" class="minibutton">
+       <a id="build-archive-href" target="_blank" href="#">Download Archive</a>
+    </li>
+
    <span id="build-epub" class="invisible">
        <li id="build-epub" class="minibutton">
           <a id="build-epub-href" target="_blank" href="#">Build EPUB</a>

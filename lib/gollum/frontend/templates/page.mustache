@@ -7,14 +7,6 @@
 <script type="text/javascript">
 
 
-   function get_domain_name() {
-      var url = window.location.href;
-      var url_parts = url.split('/');
-      var domain_name_parts = url_parts[2].split(':');
-      var domain_name = domain_name_parts[0];
-      return domain_name;
-   }
-
    function get_filename() {
       var p = window.location.pathname;
       var x = p.split("/");
@@ -22,10 +14,10 @@
    }
 
    $(document).ready(function() {
-      var archive_url = "http://" + get_domain_name() + ":8080/wsgi-bin/archive.wsgi";
+      var archive_url = "/wsgi-bin/archive.wsgi";
       $("a#build-archive-href").attr('href',archive_url);
       if (get_filename().match(/_INDEX$/)) {
-         var remote_url = "http://" + get_domain_name() + ":8080/build_epub.html?root=" + get_filename();
+         var remote_url = "/build_epub.html?root=" + get_filename();
          $("ul.actions span#build-epub").removeClass("invisible");
          $("ul.actions span#build-epub a#build-epub-href").attr('href',remote_url);
 
@@ -44,15 +36,19 @@
   <ul class="actions">
     <li class="minibutton"><a href="/pages"
       class="action-all-pages">All Pages</a></li>
+
     <li class="minibutton" class="jaws">
       <a href="#" id="minibutton-new-page">New Page</a></li>
-      <li class="minibutton" class="jaws">
-      <a href="#" id="minibutton-upload-page">Upload Attachment</a></li>
+
     <li class="minibutton"><a href="/edit/{{escaped_name}}"
        class="action-edit-page">Edit Page</a></li>
+
     <li class="minibutton"><a href="/history/{{escaped_name}}"
        class="action-page-history">Page History</a></li>
  
+    <li class="minibutton" class="jaws">
+      <a href="#" id="minibutton-upload-page">Upload Attachment</a></li>
+
     <li id="pull-archive" class="minibutton">
        <a id="build-archive-href" target="_blank" href="#">Download Archive</a>
     </li>

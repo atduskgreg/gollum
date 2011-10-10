@@ -55,7 +55,7 @@
 
    <span id="build-epub" class="invisible">
        <li id="build-epub" class="minibutton">
-          <a id="build-epub-href" target="_blank" href="#">Build EPUB</a>
+          <a id="build-epub-href" target="_blank" href="#">Build Project</a>
        </li>
     </span>
 
@@ -63,7 +63,7 @@
   {{>searchbar}}
 </div>
 <div id="wiki-content">
-  <div class="wrap{{#has_footer}} has-footer{{/has_footer}}{{#has_sidebar}} has-rightbar{{/has_sidebar}}">
+  <div class="wrap{{#has_footer}} has-footer{{/has_footer}} has-rightbar">
   <div id="wiki-body" class="gollum-{{format}}-content">
     <div id="template">
       {{{content}}}
@@ -77,7 +77,12 @@
        <li><a href="https://github.com/MakerPress/gettingStartedGuide" target="_blank">Getting Started Guide</a></li>
        <li><a href="http://svg-edit.googlecode.com/svn-history/r1771/trunk/editor/svg-editor.html" target="_blank">SVG Image Editor</a></li>
     </ul>
-    {{{sidebar_content}}}
+    <h2>Project Build Files</h2>
+    <ul class="ulist">
+        <li><a href="/log/log.html" target="_blank">Log file</a></li>
+        <li><a href="/epub/book.epub" target="_blank">EPUB</a></li>
+        <li>PDF</li>
+    </ul>
   </div>
   {{#has_footer}}
   <div id="wiki-footer" class="gollum-{{footer_format}}-content">

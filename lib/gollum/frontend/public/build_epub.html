@@ -32,6 +32,7 @@
             $("div#log-area img#working-indicator").hide();
             if (data.status == "COMPLETE") {
                $("div#log-area a#view-epub").show().attr("href",data.epub_url);
+               $("div#log-area a#view-pdf").show().attr("href",data.pdf_url);
             } else {
                $("div#log-area a#view-log").show().attr("href",data.log_url);
             }
@@ -66,6 +67,7 @@
    <div id="log-area">
       <img src="/images/working.gif" id="working-indicator" style="float: left; padding: 10px"/>Building Epub...
       <ul id="log"></ul>
+      <a href="#" id="view-pdf" style="display:none" >View PDF</a>
       <a href="#" id="view-epub" style="display:none" >View EPUB</a>
       <a href="#" id="view-log" style="display:none">View Error Log</a>
    </div>
